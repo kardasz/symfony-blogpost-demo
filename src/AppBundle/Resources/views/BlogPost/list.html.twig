@@ -1,0 +1,30 @@
+{% extends '@App/BlogPost/layout.html.twig' %}
+{% block body %}
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">Tytuł</th>
+                        <th class="column-title">Autor</th>
+                        <th class="column-title">Utworzony</th>
+                        <th class="column-title">Zaktualizowany</th>
+                        <th class="column-title">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in list %}
+                        <tr class="{{ cycle(['odd', 'even'], loop.index0) }} pointer">
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.author }}</td>
+                            <td>{{ post.createdAt | date('Y-m-d H:i:s') }}</td>
+                            <td>{{ post.updatedAt | date('Y-m-d H:i:s') }}</td>
+                            <td><a href="{{ path('blog_post_edit', {post: post.id}) }}" class="btn btn-primary">Edytuj</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

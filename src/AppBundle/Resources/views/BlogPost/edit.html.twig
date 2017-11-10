@@ -1,0 +1,14 @@
+{% extends '@App/BlogPost/layout.html.twig' %}
+{% form_theme form_post 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {{ form_start(form_post) }}
+            {{ form_widget(form_post) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+            {{ form_end(form_post) }}
+        </div>
+    </div>
+{% endblock %}

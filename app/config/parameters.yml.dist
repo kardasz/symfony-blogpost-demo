@@ -1,0 +1,15 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    env(DATABASE_HOST): 127.0.0.1
+    env(DATABASE_PORT): ~
+    env(DATABASE_NAME): symfony
+    env(DATABASE_USER): root
+    env(DATABASE_PASSWORD): ~
+
+    # A secret key that's used to generate certain security-related tokens
+    env(SECRET): ThisTokenIsNotSoSecretChangeIt
+
+    # A secret key that's used to generate certain security-related tokens
+    env(APP_VERSION): ~

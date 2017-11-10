@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      TZ: Europe/Warsaw
+      MYSQL_DATABASE: symfony
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  symfony:
+    build: ./
+    image: kardasz/symfony-blogpost-demo
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    environment:
+      SECRET: ThisTokenIsNotSoSecretChangeIt
+      TZ: Europe/Warsaw
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: symfony
+      DATABASE_USER: root
+      DATABASE_PASSWORD: ''
+      APP_VERSION: dev
+
+volumes:
+  mysql:
